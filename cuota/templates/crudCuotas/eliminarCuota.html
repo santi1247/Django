@@ -1,0 +1,13 @@
+{% extends 'paginas_base/base.html' %}
+{% block titulo %}Página Eliminar {% endblock titulo %}
+
+{% block body %}
+    <h1>Eliminar Cuota de Jugador {{ object.nom }}</h1>
+    <form method="post" id="fr_eliminar"> {% csrf_token %}
+        <p>Deseas Confirmar</p>
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+        <a name="" id="btneliminar" class="btn btn-primary btneliminar" href="{% url 'listaCuota' %}" role="button">Cancelar</a>
+    </form>
+    
+
+{% endblock body %} 

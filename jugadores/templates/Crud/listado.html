@@ -1,0 +1,66 @@
+{% extends 'paginas_base/base.html' %}
+
+{% block titulo %}Página Lista de Jugadores {% endblock titulo %}
+{% block contenido %}
+    <div class="card">
+        <div class="card-header">
+            <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear_editar' id=0  %}" role="button">Nuevo Jugador</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Jugadores</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Fecha Nacimiento</th>                       
+                        <th>Altura</th>
+                        <th>peso</th>
+                        <th>Direccion</th>
+                        <th>Código Posta</th>
+                        <th>talla</th>
+                        <th>Deporte</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ju in jugadores %}
+                    <tr>  
+                        <td>{{ ju.id}}</td>                     
+                        <td>{{ ju.DNI}}</td>
+                        <td>{{ ju.nom}}</td>
+                        <td>{{ ju.fechan}}</td>
+                        <td>{{ ju.altura }}</td>
+                        <td>{{ ju.peso}}</td>
+                        <td>{{ ju.dire}}</td>
+                        <td>{{ ju.cd}}</td>
+                        <td>{{ ju.talla }}</td>
+                        <td>{{ ju.descripcion}}</td>
+                        
+                        
+                      
+                      {% comment %}
+                        <td>
+                            <img src="{{ cl.foto.url }}" height="60">
+                        </td>  {% endcomment %}
+                        <td>
+                            <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'crear_editar' ju.id  %}" role="button">Editar</a>
+                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminar' ju.id  %}" role="button">Eliminar</a>
+                        </td>                        
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+            
+            
+        </div>
+        <div class="card-footer text-muted">
+        
+        </div>
+    </div>
+   
+   
+
+{% endblock contenido %}

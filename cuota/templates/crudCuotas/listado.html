@@ -1,0 +1,55 @@
+{% extends 'paginas_base/base.html' %}
+
+{% block titulo %}Página Lista de Cuotas {% endblock titulo %}
+{% block contenido %}
+    <div class="card">
+        <div class="card-header">
+            <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear_editarCuota' idCuota=0  %}" role="button">Nueva Cuota</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">CUOTA</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nro. Registro</th>
+                        <th>Nombre</th>    
+                        <th>Mes</th>                       
+                        <th>Fecha de Pago</th>
+                        <th>importe</th>
+                       
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ju in cuotas %}
+                    <tr>  
+                        <td>{{ ju.idCuota}}</td>     
+                        <td>{{ ju.nom}}</td>       
+                        <td>{{ ju.cuotaMes}}</td>
+                        <td>{{ ju.fechap }}</td>
+                        <td>{{ ju.importe }}</td>
+                       
+                      {% comment %}
+                        <td>
+                            <img src="{{ cl.foto.url }}" height="60">
+                        </td>  {% endcomment %}
+                        <td>
+                            <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'crear_editarCuota' ju.idCuota  %}" role="button">Editar</a>
+                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminaCuota' ju.idCuota %}" role="button">Eliminar</a>
+                        </td>                        
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+            
+            
+        </div>
+        <div class="card-footer text-muted">
+        
+        </div>
+    </div>
+   
+   
+
+{% endblock contenido %}
