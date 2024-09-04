@@ -1,0 +1,55 @@
+{% extends 'paginas_base/base.html' %}
+
+{% block titulo %}Página Lista de Eventos {% endblock titulo %}
+{% block contenido %}
+    <div class="card">
+        <div class="card-header">
+            <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear_editarEvento' idEvento=0  %}" role="button">Nuevo Evento</a>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Eventos</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Código Evento</th>
+                        <th>Nombre Evento</th>                      
+                        <th>Fecha Evento</th>
+                        <th>Ubicación</th>
+                        <th>Código del Organizador</th>
+                               
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in eventos %}
+                    <tr>  
+                        <td>{{ e.idEvento}}</td>     
+                        <td>{{ e.nom}}</td>       
+                        <td>{{ e.fecha}}</td>
+                        <td>{{ e.ubicacion }}</td>
+                        <td>{{ e.idOrganizador }}</td>
+                       
+                      {% comment %}
+                        <td>
+                            <img src="{{ cl.foto.url }}" height="60">
+                        </td>  {% endcomment %}
+                        <td>
+                            <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'crear_editarEvento' e.idEvento  %}" role="button">Editar</a>
+                            <a name="bteliminar" id="bteliminar" class="btn btn-danger" href="{% url 'eliminaEvento' e.idEvento %}" role="button">Eliminar</a>
+                        </td>                        
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+            
+            
+        </div>
+        <div class="card-footer text-muted">
+        
+        </div>
+    </div>
+   
+   
+
+{% endblock contenido %}

@@ -1,0 +1,22 @@
+{% extends 'paginas_base/base.html' %}
+
+{% block titulo %}Página Editar Evento{% endblock titulo %}
+{% block contenido %}
+    <div class="card">
+        <div class="card-header">
+            Editar Jugador
+        </div>
+        <div class="card-body">
+            <h4 class="card-title"> Editando Evento</h4>
+            {% include  'CrudEvento/form.html' %}
+            
+        </div>
+        <div class="card-footer text-muted">
+            
+        </div>
+    </div>
+    
+   
+   
+
+{% endblock contenido %}
